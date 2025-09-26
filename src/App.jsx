@@ -2,10 +2,15 @@ import { useState } from 'react'
 import './App.css'
 import ShoppingList from './components/ShoppingList';
 import MyButton from './components/MyButton';
+import MyButton2 from './components/MyButton2';
 
 
 function App() {
   const [count, setCount] = useState(0)
+
+  function handleClick() {
+    setCount(count + 1);
+  }
 
   return (
     <>
@@ -22,9 +27,8 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <MyButton2 count={count} onClick={handleClick} />
+        <MyButton2 count={count} onClick={handleClick} />
       </div>
     </>
   )
