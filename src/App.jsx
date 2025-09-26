@@ -1,12 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import ShoppingList from './components/ShoppingList';
+import MyButton from './components/MyButton';
 
-function MyButton() {
-  return (
-    <button>Jam jest przycisk</button>
-  );
-}
 
 function App() {
   const [count, setCount] = useState(0)
