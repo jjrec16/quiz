@@ -1,13 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 
 function MyButton() {
+    const [count, setCount] = useState(0);
+
     function handleClick() {
-      alert('Czuję się kliknięty!');
+      setCount(count + 1);
+      alert(`Czuję się kliknięty ${count} razy!`);
     }
   
     return (
       <button onClick={handleClick}>
-        Jam jest przycisk
+        Jam jest przycisk. count: {count}
       </button>
     );
 }
