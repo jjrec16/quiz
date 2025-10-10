@@ -10,8 +10,8 @@
 }
 
 .niezaznaczalny {
-    user-select: none; /* Dla przeglądarek współczesnych */
-    -webkit-user-select: none; /* Dla Safari */
-    -moz-user-select: none; /* Dla Firefox */
-    -ms-user-select: none; /* Dla Internet Explorer */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
