@@ -1,6 +1,6 @@
 import AnswerButton from "./AnswerButton";
 
-function QuestionPanel({ question, answers, correctIndex, addPoint }) {
+function QuestionPanel({ question, answers, correctIndex, addPoint, onNextQuestion }) {
 
     function checkAnswer(index){
       if(index == correctIndex){
@@ -10,6 +10,7 @@ function QuestionPanel({ question, answers, correctIndex, addPoint }) {
       else{
         alert("Źle!")
       }
+      onNextQuestion();
     }
 
     const answerButtons = [];
