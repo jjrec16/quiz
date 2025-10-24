@@ -9,9 +9,16 @@ import EndScreen from './components/EndScreen';
 function App() {
 
   const [points, setPoints] = useState(0)
-  const [qIndex, setQuestionIndex] = useState(0);
+  const [qIndex, setQuestionIndex] = useState(-1);
   const [gameEnded, setGameEnded] = useState(false);
 
+  const questionNumber = 3;
+  let usedQuestions = [];
+  usedQuestions.push()
+
+  if(qIndex == -1){
+    nextQuestion();
+  }
 
   function addPoint() {
     setPoints(points + 1);
@@ -19,13 +26,24 @@ function App() {
 
   function nextQuestion() {
     console.log(qIndex, questions.length)
-    if(qIndex + 1 === questions.length){
+    if(usedQuestions.length + 1 === questionNumber){
       setGameEnded(true);
       return;
     }
-    setQuestionIndex((index) => (index + 1));
-    // setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length); // w kolko
+    let rand = randomNumber(0, questions.length - 1)
+    setQuestionIndex((index) => (rand));
   }
+
+  function randomNumber(min, max){
+    return Math.floor(Math.random() * max + min)
+  }
+
+  // function test() {
+  //   let tab2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  //   for(let i=0; i<100; i++){
+  //       tab2[Math.floor(Math.random() * 10 + 1)]++
+  //   }
+  //}
 
   return (
     <>
