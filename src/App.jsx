@@ -11,10 +11,9 @@ function App() {
   const [points, setPoints] = useState(0)
   const [qIndex, setQuestionIndex] = useState(-1);
   const [gameEnded, setGameEnded] = useState(false);
+  const [usedQuestions, setUsedQuestions] = useState([]);
 
   const questionNumber = 3;
-  let usedQuestions = [];
-  usedQuestions.push()
 
   if(qIndex == -1){
     nextQuestion();
@@ -26,14 +25,21 @@ function App() {
 
   function nextQuestion() {
     console.log(qIndex, questions.length)
-    if(usedQuestions.length + 1 === questionNumber){
+    console.log(usedQuestions) 
+    if(usedQuestions.length === questionNumber){
       setGameEnded(true);
       return;
     }
-    let rand = randomNumber(0, questions.length - 1)
-    setQuestionIndex((index) => (rand));
+    let rand;
+    do{
+      rand = randomNumber(0, questions.length - 1)
+    } // TU DOKONCZYC !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    setQuestionIndex(rand);
+    setUsedQuestions((prev) => [...prev, rand])
   }
 
+  // czy ona jest dobrze???
   function randomNumber(min, max){
     return Math.floor(Math.random() * max + min)
   }
@@ -50,16 +56,20 @@ function App() {
       {gameEnded ? (
         <EndScreen points={points} />
         ) : (
-          <>
-            <QuestionPanel 
-              question={questions[qIndex].question} 
-              answers={questions[qIndex].answers} 
-              correctIndex={questions[qIndex].correctIndex} 
-              addPoint={addPoint}
-              onNextQuestion={nextQuestion}
-            />
-            <InfoPanel points={points} />
-          </>
+            qIndex>=0 ? (
+              <>
+                <QuestionPanel 
+                question={questions[qIndex].question} 
+                answers={questions[qIndex].answers} 
+                correctIndex={questions[qIndex].correctIndex} 
+                addPoint={addPoint}
+                onNextQuestion={nextQuestion}
+                />
+                <InfoPanel points={points}/>
+              </>
+            ) : (
+              <h1>Ładowanie ...</h1>
+            )
         )}
     </>
   )
